@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.web.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.smog.neteasecloud.contrll.HomeController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="640.0" prefWidth="1060.0" stylesheets="@../style/top-bar.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.smog.neteasecloud.contrll.HomeController">
+   <children>
+      <VBox layoutX="1.0" layoutY="106.0" prefHeight="789.0" prefWidth="127.0" />
+      <HBox prefHeight="100.0" prefWidth="1060.0" style="-fx-background-color: C20C0C;">
+         <children>
+            <ImageView fitHeight="90.0" image="@../image/icon/icon.png" fitWidth="136.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </HBox>
+   </children>
 </AnchorPane>

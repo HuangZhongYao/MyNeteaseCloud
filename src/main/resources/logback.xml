@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <property name="pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n"></property>
+
+    <!-- 定义log文件存放目录 -->
+    <property name="log_dir" value="./logs"/>
+
+    <!-- 输出到控制台 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- 控制输出流对象 System.out 改为System.err-->
+        <target>System.err</target>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${pattern}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="console" />
+        <appender-ref ref="async" />
+    </root>
+
+    <!-- 自定义logger 对象是否继承rootlogger-->
+    <logger level="debug" name="cn.sp" additivity="false">
+        <appender-ref ref="console"/>
+    </logger>
+</configuration>

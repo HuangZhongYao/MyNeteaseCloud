@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import lombok.extern.slf4j.Slf4j;
 import org.smog.neteasecloud.utils.Constant;
 
 /**
@@ -15,6 +16,7 @@ import org.smog.neteasecloud.utils.Constant;
  * @Time 2023-02-22 4:15
  * @Author 花开富贵
  */
+@Slf4j
 public class NeteasecCloudStartApplication extends Application {
 
     /**
@@ -27,10 +29,12 @@ public class NeteasecCloudStartApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+        log.info("默认窗口尺寸：{}，{}",Constant.DEFAULT_WINDOW_HIGH,Constant.DEFAULT_WINDOW_WIDTH);
         // 加载主页
-        Parent home = FXMLLoader.load(this.getClass().getResource("/fxml/home.fxml"));
+        Parent root = FXMLLoader.load(this.getClass().getResource("/fxml/home.fxml"));
         // 设置主场景、窗口宽高
-        Scene homeScene = new Scene(home, Constant.DEFAULT_WINDOW_WIDTH,Constant.DEFAULT_WINDOW_HIGH);
+        Scene homeScene = new Scene(root, Constant.DEFAULT_WINDOW_WIDTH,Constant.DEFAULT_WINDOW_HIGH);
         primaryStage.setScene(homeScene);
         // 设置窗口是否可变
         primaryStage.setResizable(Constant.RESIZABLE);
