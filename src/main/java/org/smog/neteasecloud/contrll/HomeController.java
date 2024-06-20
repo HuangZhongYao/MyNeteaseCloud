@@ -1,13 +1,16 @@
 package org.smog.neteasecloud.contrll;
 
 
-import javafx.event.EventHandler;
+import cn.hutool.json.JSONUtil;
 import javafx.fxml.FXML;
+import javafx.scene.control.Control;
 import javafx.scene.control.TextField;
-import javafx.scene.input.DragEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Region;
+import org.smog.neteasecloud.utils.Constant;
+import org.smog.neteasecloud.utils.Style;
 
 /**
  * 主页控制器
@@ -29,7 +32,36 @@ public class HomeController {
 
 
     public void initialize() {
-        System.out.println("initialize = " );
+        System.out.println("initialize = ");
     }
 
+    public void setSelectedNavBackgroundColor(MouseEvent event){
+        Object source = event.getSource();
+        if (source instanceof Region){
+            Region region = (Region) source;
+            region.setStyle(Style.MOUSE_OVER_FONT_STYLE);
+        }
+    }
+
+    /**
+     * 设置选择菜单背景色
+     */
+    public void setSelectedBackgroundColor(MouseEvent event){
+        Object source = event.getSource();
+        if (source instanceof Region){
+            Region region = (Region) source;
+            region.setStyle(Style.MOUSE_OVER_STYLE);
+        }
+    }
+
+    /**
+     * 移除选择菜单背景色
+     */
+    public void removeBackgroundColor(MouseEvent event){
+        Object source = event.getSource();
+        if (source instanceof Region){
+            Region region = (Region) source;
+            region.setStyle(Style.REMOVE_BACKGROUND_COLOR);
+        }
+    }
 }

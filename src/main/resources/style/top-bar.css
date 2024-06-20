@@ -7,7 +7,17 @@
     -fx-underline: false;
     -fx-font-size: 19px;
     -fx-font-style: normal;
-    -fx-font-family: Arial, Helvetica, sans-serif;
-    -fx-padding: 0 10 0 10;
+    -fx-font-family:  Yuanti SC;
+    -fx-padding: 0 20 0 20;
+    -fx-text-fill: #fff;
+}
 
+.left-menu{
+    -fx-border-width: 0;
+    -fx-underline: false;
+    -fx-font-size: 19px;
+    -fx-font-style: normal;
+    -fx-font-family:  Yuanti SC;
+    -fx-padding: 11 25 11 25;
+    -fx-pref-width: 220.0;
 }

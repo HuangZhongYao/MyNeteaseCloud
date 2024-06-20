@@ -35,4 +35,5 @@ public  interface  Constant {
      * 默认程序窗口高度
      */
     double DEFAULT_WINDOW_HIGH = PRIMARY.getHeight()/2+100;
+
 }
