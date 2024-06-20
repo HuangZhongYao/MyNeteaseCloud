@@ -1,9 +1,10 @@
 package org.smog.neteasecloud.utils;
 
 /**
+ * 
  * @Desc: Created by IntelliJ IDEA.
  * @Author: ZhongYao.Huang
- * @Copyright: 贵州道坦坦科技股份有限公司
+ * @Copyright: ZuuuuYao By Github
  * @Time: 2024-06-20 20:17
  */
 public interface Style {

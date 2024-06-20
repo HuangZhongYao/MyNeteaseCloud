@@ -45,7 +45,7 @@
                  <graphic>
                      <ImageView>
                         <image>
-                            <Image requestedHeight="20" requestedWidth="20" url="@/image/icon/wyy.png" />
+                            <Image preserveRatio="true" requestedHeight="20" requestedWidth="20" url="@/image/icon/wyy.png" />
                         </image>
                      </ImageView>
                  </graphic>
@@ -54,7 +54,7 @@
                  <graphic>
                      <ImageView>
                          <image>
-                             <Image requestedHeight="20" requestedWidth="20" url="@/image/icon/wyy.png" />
+                             <Image preserveRatio="true" requestedHeight="20" requestedWidth="20" url="@/image/icon/yyyjx.png" />
                          </image>
                      </ImageView>
                  </graphic>
@@ -63,7 +63,7 @@
                  <graphic>
                      <ImageView>
                          <image>
-                             <Image requestedHeight="20" requestedWidth="20" url="@/image/icon/wyy.png" />
+                             <Image preserveRatio="true" requestedHeight="22" requestedWidth="22" url="@/image/icon/bk.png" />
                          </image>
                      </ImageView>
                  </graphic>
@@ -72,7 +72,7 @@
                  <graphic>
                      <ImageView>
                          <image>
-                             <Image requestedHeight="20" requestedWidth="20" url="@/image/icon/wyy.png" />
+                             <Image preserveRatio="true" requestedHeight="20" requestedWidth="20" url="@/image/icon/srmy.png" />
                          </image>
                      </ImageView>
                  </graphic>
@@ -81,7 +81,7 @@
                  <graphic>
                      <ImageView>
                          <image>
-                             <Image requestedHeight="20" requestedWidth="20" url="@/image/icon/wyy.png" />
+                             <Image preserveRatio="true" requestedHeight="20" requestedWidth="20" url="@/image/icon/sq.png" />
                          </image>
                      </ImageView>
                  </graphic>
@@ -90,12 +90,12 @@
                  <graphic>
                      <ImageView>
                          <image>
-                             <Image requestedHeight="20" requestedWidth="20" url="@/image/icon/wyy.png" />
+                             <Image preserveRatio="true" requestedHeight="20" requestedWidth="20" url="@/image/icon/like.png" />
                          </image>
                      </ImageView>
                  </graphic>
              </Hyperlink>
-             <Hyperlink onMouseEntered="#setSelectedBackgroundColor" onMouseExited="#removeBackgroundColor" styleClass="left-menu" stylesheets="@../style/top-bar.css" text="我都播客" textFill="#787f8d" >
+             <Hyperlink onMouseEntered="#setSelectedBackgroundColor" onMouseExited="#removeBackgroundColor" styleClass="left-menu" stylesheets="@../style/top-bar.css" text="我的播客" textFill="#787f8d" >
                  <graphic>
                      <ImageView>
                          <image>
