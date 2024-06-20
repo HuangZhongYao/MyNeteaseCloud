@@ -1,20 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.web.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<BorderPane fx:id="root"
+            maxHeight="-Infinity"
+            maxWidth="-Infinity"
+            minHeight="-Infinity"
+            minWidth="-Infinity"
+            prefHeight="640"
+            prefWidth="1060"
+            stylesheets="@../style/top-bar.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.smog.neteasecloud.contrll.HomeController">
+    <top>
+    <HBox fx:id="top" alignment="CENTER_LEFT" style="-fx-background-color: C20C0C; -fx-padding: 0 0 0 20;">
+        <HBox fx:id="logo" alignment="CENTER_LEFT" prefHeight="97.0" prefWidth="170.0"
+              style="-fx-background-image: url('/image/topbar.png'); -fx-background-repeat: no-repeat; -fx-background-position: 0 10;">
+        </HBox>
+        <Hyperlink styleClass="tob-nav" stylesheets="@../style/top-bar.css" text="发现音乐" textFill="WHITE"/>
+        <Hyperlink styleClass="tob-nav" stylesheets="@../style/top-bar.css" text="关注" textFill="WHITE"/>
+        <Hyperlink styleClass="tob-nav" stylesheets="@../style/top-bar.css" text="商城" textFill="WHITE"/>
+        <Hyperlink styleClass="tob-nav" stylesheets="@../style/top-bar.css" text="音乐人" textFill="WHITE"/>
+        <Hyperlink styleClass="tob-nav" stylesheets="@../style/top-bar.css" text="云推歌" textFill="WHITE"/>
+        <TextField fx:id="search" promptText="音乐/视频/电台/用户"
+                   style="-fx-background-radius: 15; -fx-background-color: #fff;">
+            <padding>
+                <Insets bottom="5.0" left="20.0" top="5.0"/>
+            </padding>
+        </TextField>
+    </HBox>
+    </top>
 
-<AnchorPane prefHeight="640.0" prefWidth="1060.0" stylesheets="@../style/top-bar.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.smog.neteasecloud.contrll.HomeController">
-   <children>
-      <VBox layoutY="100.0" prefHeight="737.0" prefWidth="127.0" />
-      <HBox prefHeight="100.0" prefWidth="1060.0" style="-fx-background-color: C20C0C;">
-         <children>
-            <ImageView fitHeight="97.0"  fitWidth="144.0" pickOnBounds="true" preserveRatio="true" />
-         </children>
-      </HBox>
-   </children>
-</AnchorPane>
+    <left>
+        <VBox style="-fx-background-color: #333" prefWidth="90">
+        </VBox>
+
+    </left>
+
+    <center>
+        <Pane style="-fx-background-color: green" >
+
+        </Pane>
+
+    </center>
+
+    <bottom>
+    <Pane style="-fx-background-color: #FFF" prefHeight="90">
+    </Pane>
+    </bottom>
+</BorderPane>

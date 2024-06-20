@@ -30,7 +30,6 @@ public class NeteasecCloudStartApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        log.info("默认窗口尺寸：{}，{}",Constant.DEFAULT_WINDOW_HIGH,Constant.DEFAULT_WINDOW_WIDTH);
         // 加载主页
         Parent root = FXMLLoader.load(this.getClass().getResource("/fxml/home.fxml"));
         // 设置主场景、窗口宽高
@@ -44,6 +43,7 @@ public class NeteasecCloudStartApplication extends Application {
         primaryStage.getIcons().addAll(new Image("/image/icon/icon.png"));
         // 显示窗口
         primaryStage.show();
+        log.info("默认窗口尺寸：{},{}",Constant.DEFAULT_WINDOW_HIGH,Constant.DEFAULT_WINDOW_WIDTH);
 
     }
 }
