@@ -6,12 +6,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
-<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="440" minWidth="860" prefHeight="640" prefWidth="1060" stylesheets="@../style/top-bar.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.smog.neteasecloud.contrll.HomeController">
+<BorderPane fx:id="root"  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="440" minWidth="860" prefHeight="640" prefWidth="1060" style="-fx-background-color: #F7F9FC;" stylesheets="@../style/top-bar.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.smog.neteasecloud.contrll.HomeController">
     <top>
-    <HBox fx:id="top" alignment="CENTER_LEFT" style="-fx-background-color: fc3d49; -fx-padding: 0 0 0 20;">
+    <HBox fx:id="top" spacing="5" alignment="CENTER_LEFT" style="-fx-background-color: fc3d49; -fx-padding: 0 0 0 20;">
        <children>
            <HBox fx:id="logo" alignment="CENTER_LEFT" prefHeight="97.0" prefWidth="170.0" style="-fx-background-image: url('/image/topbar.png'); -fx-background-repeat: no-repeat; -fx-background-position: 0 10;">
-        </HBox>
+            </HBox>
            <Hyperlink onMouseEntered="#setSelectedNavBackgroundColor" onMouseExited="#removeBackgroundColor" styleClass="tob-nav" stylesheets="@../style/top-bar.css" text="发现音乐" textFill="WHITE" />
            <Hyperlink onMouseEntered="#setSelectedNavBackgroundColor" onMouseExited="#removeBackgroundColor" styleClass="tob-nav" stylesheets="@../style/top-bar.css" text="关注" textFill="WHITE" />
            <Hyperlink onMouseEntered="#setSelectedNavBackgroundColor" onMouseExited="#removeBackgroundColor" styleClass="tob-nav" stylesheets="@../style/top-bar.css" text="商城" textFill="WHITE" />

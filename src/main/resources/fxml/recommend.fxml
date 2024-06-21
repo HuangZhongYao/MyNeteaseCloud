@@ -2,47 +2,20 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.media.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.smog.neteasecloud.contrll.RecommendController">
+<?import javafx.scene.image.ImageView?>
+<AnchorPane prefWidth="500" prefHeight="300" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.smog.neteasecloud.contrll.RecommendController">
    <children>
-      <GridPane>
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-      </GridPane>
-      <MenuButton mnemonicParsing="false" text="2222222222222222222222222323">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
-        </items>
-      </MenuButton>
-      <MenuBar>
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <MediaView fitHeight="200.0" fitWidth="200.0" />
+       <ScrollPane hbarPolicy="NEVER" styleClass="scroll-pane" stylesheets="@/style/recommend.css" vbarPolicy="NEVER"  AnchorPane.topAnchor="3.0">
+          <content>
+              <AnchorPane fx:id="contentPane" minHeight="0" minWidth="0" styleClass="scroll-pane">
+               <children>
+                   <HBox>
+                    <ImageView fx:id="carousel"/>
+                   </HBox>
+               </children>
+            </AnchorPane>
+          </content>
+       </ScrollPane>
    </children>
 </AnchorPane>
