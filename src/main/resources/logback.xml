@@ -3,7 +3,7 @@
     <property name="pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n"></property>
 
     <!-- 定义log文件存放目录 -->
-    <property name="log_dir" value="./logs"/>
+    <property name="log_dir" value="/logs"/>
 
     <!-- 输出到控制台 -->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
