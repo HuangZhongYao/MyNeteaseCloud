@@ -9,6 +9,10 @@ import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 import org.smog.neteasecloud.utils.Constant;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 /**
  * 应用启动入口
  *
@@ -44,6 +48,22 @@ public class NeteasecCloudStartApplication extends Application {
         // 显示窗口
         primaryStage.show();
         log.info("默认窗口尺寸：{},{}",Constant.DEFAULT_WINDOW_HIGH,Constant.DEFAULT_WINDOW_WIDTH);
+        // 初始化
+        this.initialize(primaryStage);
+    }
 
+
+    private void initialize(Stage primaryStage) {
+
+        // 读取配置文件
+        try (InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("application.properties")) {
+
+            Properties properties = new Properties();
+            properties.load(inputStream);
+
+            System.getProperties().putAll(properties);
+        } catch (IOException e) {
+            log.error("读取配置配置文件错误. 错误信息: {}",e.getMessage());
+        }
     }
 }

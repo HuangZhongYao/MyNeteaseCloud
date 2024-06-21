@@ -45,7 +45,7 @@
                  <graphic>
                      <ImageView>
                         <image>
-                            <Image preserveRatio="true" requestedHeight="20" requestedWidth="20" url="@/image/icon/wyy.png" />
+                            <Image preserveRatio="true" requestedHeight="25" requestedWidth="25" url="@/image/icon/wyy.png" />
                         </image>
                      </ImageView>
                  </graphic>
@@ -63,7 +63,7 @@
                  <graphic>
                      <ImageView>
                          <image>
-                             <Image preserveRatio="true" requestedHeight="22" requestedWidth="22" url="@/image/icon/bk.png" />
+                             <Image preserveRatio="true" requestedHeight="20" requestedWidth="20" url="@/image/icon/bk.png" />
                          </image>
                      </ImageView>
                  </graphic>
@@ -86,7 +86,7 @@
                      </ImageView>
                  </graphic>
              </Hyperlink>
-             <Hyperlink onMouseEntered="#setSelectedBackgroundColor" onMouseExited="#removeBackgroundColor" styleClass="left-menu" stylesheets="@../style/top-bar.css" text="我喜欢的音乐" textFill="#787f8d" >
+             <Hyperlink onMouseEntered="#setSelectedBackgroundColor" onMouseExited="#removeBackgroundColor" styleClass="left-menu" stylesheets="@../style/top-bar.css" text="我喜欢的" textFill="#787f8d" >
                  <graphic>
                      <ImageView>
                          <image>
@@ -99,16 +99,16 @@
                  <graphic>
                      <ImageView>
                          <image>
-                             <Image requestedHeight="20" requestedWidth="20" url="@/image/icon/wyy.png" />
+                             <Image requestedHeight="20" requestedWidth="20" url="@/image/icon/wdbk.png" />
                          </image>
                      </ImageView>
                  </graphic>
              </Hyperlink>
-             <Hyperlink onMouseEntered="#setSelectedBackgroundColor" onMouseExited="#removeBackgroundColor" styleClass="left-menu" stylesheets="@../style/top-bar.css" text="我都收藏" textFill="#787f8d" >
+             <Hyperlink onMouseEntered="#setSelectedBackgroundColor" onMouseExited="#removeBackgroundColor" styleClass="left-menu" stylesheets="@../style/top-bar.css" text="我的收藏" textFill="#787f8d" >
                  <graphic>
                      <ImageView>
                          <image>
-                             <Image requestedHeight="20" requestedWidth="20" url="@/image/icon/wyy.png" />
+                             <Image requestedHeight="20" requestedWidth="20" url="@/image/icon/sc.png" />
                          </image>
                      </ImageView>
                  </graphic>
@@ -117,7 +117,7 @@
                  <graphic>
                      <ImageView>
                          <image>
-                             <Image requestedHeight="20" requestedWidth="20" url="@/image/icon/wyy.png" />
+                             <Image requestedHeight="20" requestedWidth="20" url="@/image/icon/xz.png" />
                          </image>
                      </ImageView>
                  </graphic>
