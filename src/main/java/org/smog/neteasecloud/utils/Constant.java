@@ -36,4 +36,53 @@ public  interface  Constant {
      */
     double DEFAULT_WINDOW_HIGH = PRIMARY.getHeight()/2+100;
 
+    /**
+     * 404场景路径
+     */
+    String DEFAULT_SCENE_PATH = "/fxml/404.fxml";
+
+    /**
+     * 为我推荐场景页面
+     */
+    String RECOMMEND_SCENE_PATH = "/fxml/recommend.fxml";
+
+    /**
+     * 精选场景页面路径
+     */
+    String FEATURED_SCENE_PATH = "/fxml/featured.fxml";
+
+    /**
+     * 播客场景页面路径
+     */
+    String PODCAST_SCENE_PATH = "/fxml/podcast.fxml";
+
+    /**
+     * 私人漫游场景页面路径
+     */
+    String PRIVATE_ROAMING_SCENE_PATH = "/fxml/privateRoaming.fxml";
+
+    /**
+     * 社区场景页面路径
+     */
+    String COMMUNITY_SCENE_PATH = "/fxml/community.fxml";
+
+    /**
+     * 我喜欢的场景页面路径
+     */
+    String I_LIKE_SCENE_PATH = "/fxml/iLike.fxml";
+
+    /**
+     * 我的播客场景页面路径
+     */
+    String MY_PODCAST_SCENE_PATH = "/fxml/myPodcast.fxml";
+
+    /**
+     * 我的收藏场景页面路径
+     */
+    String MY_COLLECTION_SCENE_PATH = "/fxml/myCollection.fxml";
+
+    /**
+     * 下载管理场景页面路径
+     */
+    String DOWNLOAD_MANAGEMENT_SCENE_PATH = "/fxml/downloadManagement.fxml";
 }
