@@ -1,8 +1,10 @@
 package org.smog.neteasecloud.conf;
 
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.HashMap;
 import java.util.Properties;
 
 /**
@@ -26,6 +28,11 @@ public final class AppContext {
      * 应用配置信息
      */
     private static Properties APP_PROPERTIES = null;
+
+    /**
+     * 缓存场景页面
+     */
+    public static final HashMap<String, Parent> CACHE_SCENE = new HashMap<>();
 
     public static Scene getMainScene() {
         return MAIN_SCENE;

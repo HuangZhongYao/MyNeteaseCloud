@@ -3,6 +3,7 @@ package org.smog.neteasecloud.contrll;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -12,6 +13,8 @@ import javafx.scene.layout.Region;
 import org.smog.neteasecloud.utils.Constant;
 import org.smog.neteasecloud.utils.FXMLUtils;
 import org.smog.neteasecloud.utils.Style;
+
+import java.util.HashMap;
 
 /**
  * 主页控制器
@@ -37,6 +40,7 @@ public class HomeController {
 
     @FXML
     private Hyperlink recommendMenu;
+
 
     public void initialize() {
         System.out.println("initialize = ");
