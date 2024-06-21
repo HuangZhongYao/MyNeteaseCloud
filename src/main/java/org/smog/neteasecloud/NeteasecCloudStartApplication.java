@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
+import org.smog.neteasecloud.conf.AppContext;
 import org.smog.neteasecloud.utils.Constant;
 
 import java.io.IOException;
@@ -49,21 +50,25 @@ public class NeteasecCloudStartApplication extends Application {
         primaryStage.show();
         log.info("默认窗口尺寸：{},{}",Constant.DEFAULT_WINDOW_HIGH,Constant.DEFAULT_WINDOW_WIDTH);
         // 初始化
-        this.initialize(primaryStage);
+        this.initialize(primaryStage,homeScene);
     }
 
 
-    private void initialize(Stage primaryStage) {
+    private void initialize(Stage primaryStage,Scene scene) {
 
         // 读取配置文件
+        Properties properties = new Properties();
+
         try (InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("application.properties")) {
 
-            Properties properties = new Properties();
             properties.load(inputStream);
-
-            System.getProperties().putAll(properties);
         } catch (IOException e) {
             log.error("读取配置配置文件错误. 错误信息: {}",e.getMessage());
         }
+
+        // 初始化应用上下文
+        AppContext.setMainScene(scene);
+        AppContext.setPrimaryStage(primaryStage);
+        AppContext.setAppProperties(properties);
     }
 }
