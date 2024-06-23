@@ -38,7 +38,7 @@
     </top>
 
     <left>
-        <VBox prefWidth="220.0" style="-fx-background-color: #f0f3f6">
+        <VBox fx:id="leftMenu" prefWidth="220.0" style="-fx-background-color: #f0f3f6">
          <children>
              <Hyperlink fx:id="recommendMenu" onAction="#toRecommend" onMouseEntered="#setSelectedBackgroundColor" onMouseExited="#removeBackgroundColor" styleClass="left-menu" stylesheets="@../style/top-bar.css" text="为我推荐" textFill="#787f8d">
                  <graphic>
