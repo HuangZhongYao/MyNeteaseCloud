@@ -4,3 +4,8 @@
     -fx-background-color: #F7F9FC;
     -fx-border-color: #F7F9FC;
 }
+
+.carousel{
+    -fx-background-radius: 15; /* 设置背景圆角半径 */
+    -fx-clip: null; /* 清除默认剪辑 */
+}

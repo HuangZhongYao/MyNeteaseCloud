@@ -62,7 +62,7 @@ public class RecommendController {
         carousel.setImage(carouselUrls[index.get()]);
 
         // 每三秒切换图片
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), e -> {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5), e -> {
 
             log.debug("为我推荐页面轮播切换图片.");
 
