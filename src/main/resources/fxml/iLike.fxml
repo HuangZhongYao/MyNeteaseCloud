@@ -1,13 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            prefHeight="400.0" prefWidth="600.0">
-<Label text="我喜欢"/>
-</AnchorPane>
+<ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background: #f7f9fc; -fx-background-color: #f7f9fc;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+    <content>
+        <VBox spacing="18" style="-fx-background-color: #f7f9fc; -fx-padding: 22 24 22 24;">
+            <children>
+                <VBox spacing="6">
+                    <children>
+                        <Label style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1f2737;" text="我喜欢的音乐" />
+                        <Label style="-fx-font-size: 14px; -fx-text-fill: #65748f;" text="收藏你最常听、最喜欢的歌曲" />
+                    </children>
+                </VBox>
+
+                <HBox spacing="8">
+                    <children>
+                        <Button mnemonicParsing="false" style="-fx-background-color: #fc3d49; -fx-text-fill: white; -fx-background-radius: 16; -fx-padding: 6 14;" text="歌曲" />
+                        <Button mnemonicParsing="false" style="-fx-background-color: #eef2f8; -fx-text-fill: #41506c; -fx-background-radius: 16; -fx-padding: 6 14;" text="专辑" />
+                        <Button mnemonicParsing="false" style="-fx-background-color: #eef2f8; -fx-text-fill: #41506c; -fx-background-radius: 16; -fx-padding: 6 14;" text="歌手" />
+                    </children>
+                </HBox>
+
+                <HBox spacing="14">
+                    <children>
+                        <VBox spacing="10" style="-fx-background-color: linear-gradient(to right, #fb5a5a, #ff7f6f); -fx-background-radius: 14; -fx-padding: 16;" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" text="我喜欢的" />
+                                <Label style="-fx-text-fill: #ffeceb;" text="每日更新推荐内容，保持探索的新鲜感。" wrapText="true" />
+                                <HBox spacing="8">
+                                    <children>
+                                        <Button mnemonicParsing="false" style="-fx-background-color: white; -fx-text-fill: #f35252; -fx-background-radius: 16; -fx-padding: 6 14;" text="立即收听" />
+                                        <Button mnemonicParsing="false" style="-fx-background-color: rgba(255,255,255,0.25); -fx-text-fill: white; -fx-background-radius: 16; -fx-padding: 6 14;" text="收藏" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="8" style="-fx-background-color: white; -fx-background-radius: 14; -fx-border-color: #e8ecf3; -fx-border-radius: 14; -fx-padding: 14;" prefWidth="290">
+                            <children>
+                                <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2b3448;" text="热榜速览" />
+                                <Label style="-fx-text-fill: #53607a;" text="1  ·  最近喜欢" />
+                                <Label style="-fx-text-fill: #53607a;" text="2  ·  单曲循环" />
+                                <Label style="-fx-text-fill: #53607a;" text="3  ·  高评分收藏" />
+                                <Label style="-fx-text-fill: #53607a;" text="4  ·  按时间排序" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+
+                <VBox spacing="10">
+                    <children>
+                        <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2b3448;" text="推荐歌单" />
+                        <HBox spacing="12">
+                            <children>
+                                <VBox spacing="6" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #e8ecf3; -fx-border-radius: 12; -fx-padding: 12;" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Region prefHeight="88" style="-fx-background-color: #f0f4fb; -fx-background-radius: 10;" />
+                                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2f3a51;" text="最爱华语" />
+                                        <Label style="-fx-text-fill: #7b879c;" text="精选 20 首" />
+                                    </children>
+                                </VBox>
+                                <VBox spacing="6" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #e8ecf3; -fx-border-radius: 12; -fx-padding: 12;" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Region prefHeight="88" style="-fx-background-color: #f0f4fb; -fx-background-radius: 10;" />
+                                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2f3a51;" text="通勤收藏" />
+                                        <Label style="-fx-text-fill: #7b879c;" text="精选 20 首" />
+                                    </children>
+                                </VBox>
+                                <VBox spacing="6" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #e8ecf3; -fx-border-radius: 12; -fx-padding: 12;" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Region prefHeight="88" style="-fx-background-color: #f0f4fb; -fx-background-radius: 10;" />
+                                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2f3a51;" text="睡前必听" />
+                                        <Label style="-fx-text-fill: #7b879c;" text="精选 20 首" />
+                                    </children>
+                                </VBox>
+                                <VBox spacing="6" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #e8ecf3; -fx-border-radius: 12; -fx-padding: 12;" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Region prefHeight="88" style="-fx-background-color: #f0f4fb; -fx-background-radius: 10;" />
+                                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2f3a51;" text="回忆清单" />
+                                        <Label style="-fx-text-fill: #7b879c;" text="精选 20 首" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <VBox spacing="8" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #e8ecf3; -fx-border-radius: 12; -fx-padding: 14;">
+                    <children>
+                        <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2b3448;" text="最新音乐" />
+                        <HBox><children><Label style="-fx-text-fill: #53607a;" text="1" /><Region HBox.hgrow="ALWAYS" /><Label style="-fx-text-fill: #37455f;" text="风停在街角" /><Region HBox.hgrow="ALWAYS" /><Label style="-fx-text-fill: #8a96ab;" text="03:26" /></children></HBox>
+                        <HBox><children><Label style="-fx-text-fill: #53607a;" text="2" /><Region HBox.hgrow="ALWAYS" /><Label style="-fx-text-fill: #37455f;" text="给昨天的信" /><Region HBox.hgrow="ALWAYS" /><Label style="-fx-text-fill: #8a96ab;" text="04:08" /></children></HBox>
+                        <HBox><children><Label style="-fx-text-fill: #53607a;" text="3" /><Region HBox.hgrow="ALWAYS" /><Label style="-fx-text-fill: #37455f;" text="你在银河那端" /><Region HBox.hgrow="ALWAYS" /><Label style="-fx-text-fill: #8a96ab;" text="02:57" /></children></HBox>
+                        <HBox><children><Label style="-fx-text-fill: #53607a;" text="4" /><Region HBox.hgrow="ALWAYS" /><Label style="-fx-text-fill: #37455f;" text="清晨半杯咖啡" /><Region HBox.hgrow="ALWAYS" /><Label style="-fx-text-fill: #8a96ab;" text="03:44" /></children></HBox>
+                        <HBox><children><Label style="-fx-text-fill: #53607a;" text="5" /><Region HBox.hgrow="ALWAYS" /><Label style="-fx-text-fill: #37455f;" text="慢慢拥抱" /><Region HBox.hgrow="ALWAYS" /><Label style="-fx-text-fill: #8a96ab;" text="04:11" /></children></HBox>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </content>
+</ScrollPane>
