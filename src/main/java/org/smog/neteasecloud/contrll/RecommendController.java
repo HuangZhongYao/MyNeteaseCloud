@@ -12,77 +12,85 @@ import org.slf4j.LoggerFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * 为我推荐页控制器
- * @Desc
+ * 推荐页控制器
+ *
+ * @Desc 管理轮播图展示
  * @Time 2024-06-21 10:31
  * @Author HuangZhongYao
  */
 public class RecommendController {
 
     private static final Logger log = LoggerFactory.getLogger(RecommendController.class);
-    /**
-     * 轮播图
-     */
+
+    /** 轮播图片路径（延迟加载，首次访问时才加载 Image 对象） */
+    private static final String[] CAROUSEL_IMAGE_PATHS = {
+            "/image/carousel/1.jpg",
+            "/image/carousel/2.jpg",
+            "/image/carousel/3.jpg",
+            "/image/carousel/4.jpg",
+            "/image/carousel/5.jpg",
+            "/image/carousel/6.jpg",
+            "/image/carousel/7.jpg",
+            "/image/carousel/8.jpg",
+    };
+
+    /** 延迟加载的图片缓存 */
+    private static Image[] carouselImages;
+
+    /** 轮播图组件 */
     @FXML
     public ImageView carousel;
 
     /**
-     * 轮播图片列表
-     */
-    private static Image[] carouselUrls = new Image[]{
-            new Image("/image/carousel/1.jpg"),
-            new Image("/image/carousel/2.jpg"),
-            new Image("/image/carousel/3.jpg"),
-            new Image("/image/carousel/4.jpg"),
-            new Image("/image/carousel/5.jpg"),
-            new Image("/image/carousel/6.jpg"),
-            new Image("/image/carousel/7.jpg"),
-            new Image("/image/carousel/8.jpg"),
-    };
-
-    /**
-     * 初始化函数 将在FXML被加载时执行
+     * 初始化（FXML 加载时自动调用）
      */
     public void initialize() {
-        // 开启轮播
-        this.startBanner();
+        startBanner();
     }
 
     /**
-     * 轮播图片
+     * 启动轮播
      */
     public void startBanner() {
+        log.debug("推荐页 startBanner..");
 
-        log.debug("为我推荐页面 startBanner..");
+        // 延迟加载图片
+        loadImagesIfNeeded();
 
-        // 轮播图片下标
         final AtomicInteger index = new AtomicInteger(0);
+        carousel.setImage(carouselImages[0]);
 
-        // 设置初始图片
-        carousel.setImage(carouselUrls[index.get()]);
-
-        // 每三秒切换图片
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5), e -> {
+            log.debug("推荐页轮播切换图片");
 
-            log.debug("为我推荐页面轮播切换图片.");
-
-            // 获取下标
-            int indexTemp = index.incrementAndGet();
-
-            // 如果下标为最后一个重置为0
-            indexTemp = indexTemp == carouselUrls.length ? 0 : indexTemp;
-
-            // 设置下标
-            index.set(indexTemp);
-
-            // 设置图片
-            carousel.setImage(carouselUrls[index.get()]);
+            int next = index.incrementAndGet();
+            if (next >= carouselImages.length) {
+                next = 0;
+            }
+            index.set(next);
+            carousel.setImage(carouselImages[index.get()]);
         }));
 
-        // 设置无限循环
         timeline.setCycleCount(Timeline.INDEFINITE);
-
-        // 启动
         timeline.play();
+    }
+
+    /**
+     * 延迟加载轮播图片（首次调用时才加载，减少应用启动时间）
+     */
+    private static void loadImagesIfNeeded() {
+        if (carouselImages != null) {
+            return;
+        }
+        synchronized (RecommendController.class) {
+            if (carouselImages != null) {
+                return;
+            }
+            carouselImages = new Image[CAROUSEL_IMAGE_PATHS.length];
+            for (int i = 0; i < CAROUSEL_IMAGE_PATHS.length; i++) {
+                carouselImages[i] = new Image(CAROUSEL_IMAGE_PATHS[i]);
+            }
+            log.debug("轮播图片加载完成，共 {} 张", carouselImages.length);
+        }
     }
 }

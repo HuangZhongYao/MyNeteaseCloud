@@ -4,68 +4,108 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 /**
- * @Desc 应用上下文
+ * 应用上下文（全局单例状态）
+ *
+ * @Desc 持有主舞台、主场景、配置信息及场景缓存
  * @Time 2024-06-21 10:47
  * @Author HuangZhongYao
  */
 public final class AppContext {
 
-    /**
-     * 主场景
-     */
-    private static Scene MAIN_SCENE = null;
+    private AppContext() {
+        // 工具类，禁止实例化
+    }
 
-    /**
-     * 主舞台
-     */
-    private static Stage PRIMARY_STAGE = null;
+    /** 主场景 */
+    private static Scene mainScene;
 
-    /**
-     * 应用配置信息
-     */
-    private static Properties APP_PROPERTIES = null;
+    /** 主舞台 */
+    private static Stage primaryStage;
 
-    /**
-     * 缓存场景页面
-     */
-    public static final HashMap<String, Parent> CACHE_SCENE = new HashMap<>();
+    /** 应用配置信息 */
+    private static Properties appProperties;
+
+    /** 场景缓存（FXML 路径 → 已加载的 Parent） */
+    private static final Map<String, Parent> CACHE_SCENE = new HashMap<>();
+
+    // ==================== 主场景 ====================
 
     public static Scene getMainScene() {
-        return MAIN_SCENE;
+        return mainScene;
     }
 
     public static void setMainScene(Scene mainScene) {
-        if (MAIN_SCENE != null){
-            throw new RuntimeException("AppContext.MAIN_SCENE has already been assigned and cannot be assigned again.");
+        if (AppContext.mainScene != null) {
+            throw new IllegalStateException("AppContext.mainScene 已被赋值，不可重复设置");
         }
-        AppContext.MAIN_SCENE = mainScene;
+        AppContext.mainScene = mainScene;
     }
 
+    // ==================== 主舞台 ====================
+
     public static Stage getPrimaryStage() {
-        return PRIMARY_STAGE;
+        return primaryStage;
     }
 
     public static void setPrimaryStage(Stage primaryStage) {
-        if (PRIMARY_STAGE != null){
-            throw new RuntimeException("AppContext.PRIMARY_STAGE has already been assigned and cannot be assigned again.");
+        if (AppContext.primaryStage != null) {
+            throw new IllegalStateException("AppContext.primaryStage 已被赋值，不可重复设置");
         }
-        AppContext.PRIMARY_STAGE = primaryStage;
+        AppContext.primaryStage = primaryStage;
     }
 
+    // ==================== 应用配置 ====================
+
     public static Properties getAppProperties() {
-        return APP_PROPERTIES;
+        return appProperties;
     }
 
     public static void setAppProperties(Properties properties) {
-        if (APP_PROPERTIES != null){
-            throw new RuntimeException("AppContext.APP_PROPERTIES has already been assigned and cannot be assigned again.");
+        if (AppContext.appProperties != null) {
+            throw new IllegalStateException("AppContext.appProperties 已被赋值，不可重复设置");
         }
-        AppContext.APP_PROPERTIES = properties;
+        AppContext.appProperties = properties;
     }
 
+    // ==================== 场景缓存 ====================
 
+    /**
+     * 获取缓存的场景
+     *
+     * @param path FXML 文件路径
+     * @return 缓存的 Parent，不存在返回 null
+     */
+    public static Parent getCachedScene(String path) {
+        return CACHE_SCENE.get(path);
+    }
+
+    /**
+     * 缓存场景
+     *
+     * @param path   FXML 文件路径
+     * @param parent 加载后的场景节点
+     */
+    public static void putCachedScene(String path, Parent parent) {
+        CACHE_SCENE.put(path, parent);
+    }
+
+    /**
+     * 获取场景缓存的只读视图
+     */
+    public static Map<String, Parent> getSceneCacheView() {
+        return Collections.unmodifiableMap(CACHE_SCENE);
+    }
+
+    /**
+     * 清空场景缓存
+     */
+    public static void clearSceneCache() {
+        CACHE_SCENE.clear();
+    }
 }

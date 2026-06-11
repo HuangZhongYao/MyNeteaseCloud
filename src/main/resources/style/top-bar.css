@@ -1,23 +1,363 @@
-#top.bar{
-    -fx-background-color: C20C0C;
+/* ================================================================
+ * MyNeteaseCloud 全局样式表
+ * 设计语言：现代简约 + 网易云音乐经典红色系
+ * ================================================================ */
+
+/* ==================== 根字体设置 ==================== */
+.root {
+    -fx-font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", sans-serif;
+    -fx-font-smoothing-type: lcd;
 }
 
-.tob-nav{
-    -fx-border-width: 0;
-    -fx-underline: false;
-    -fx-font-size: 19px;
-    -fx-font-style: normal;
-    -fx-font-family:  Yuanti SC;
-    -fx-padding: 0 20 0 20;
-    -fx-text-fill: #fff;
+/* ================================================================
+ * 顶部导航栏
+ * ================================================================ */
+
+/* 顶部栏背景 — 网易云红渐变 */
+#top-bar {
+    -fx-background-color: linear-gradient(to right, #e83a3f, #ec4141);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 6, 0, 0, 2);
+    -fx-padding: 0 0 0 24;
 }
 
-.left-menu{
+/* 导航链接基础样式 */
+.tob-nav {
     -fx-border-width: 0;
     -fx-underline: false;
-    -fx-font-size: 19px;
-    -fx-font-style: normal;
-    -fx-font-family:  Yuanti SC;
-    -fx-padding: 11 25 11 25;
-    -fx-pref-width: 220.0;
+    -fx-font-size: 15px;
+    -fx-font-weight: normal;
+    -fx-padding: 8 18 8 18;
+    -fx-text-fill: rgba(255,255,255,0.85);
+    -fx-background-radius: 20;
+    -fx-cursor: hand;
+    -fx-transition: all 0.2s ease;
+}
+
+/* 导航链接 hover */
+.tob-nav:hover {
+    -fx-text-fill: #ffffff;
+    -fx-background-color: rgba(255,255,255,0.15);
+}
+
+/* 导航链接选中态 */
+.tob-nav-active {
+    -fx-border-width: 0;
+    -fx-underline: false;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-padding: 8 18 8 18;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: rgba(255,255,255,0.20);
+    -fx-background-radius: 20;
+}
+
+/* ================================================================
+ * 搜索框
+ * ================================================================ */
+
+.search-field {
+    -fx-background-radius: 18;
+    -fx-background-color: rgba(255,255,255,0.92);
+    -fx-border-color: transparent;
+    -fx-border-radius: 18;
+    -fx-padding: 6 16 6 36;
+    -fx-font-size: 13px;
+    -fx-text-fill: #333;
+    -fx-prompt-text-fill: #b0b0b0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 4, 0, 0, 1);
+    -fx-transition: all 0.25s ease;
+}
+
+.search-field:focused {
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(236,65,65,0.18), 8, 0, 0, 2);
+}
+
+/* ================================================================
+ * 左侧菜单
+ * ================================================================ */
+
+#left-menu {
+    -fx-background-color: #f0f2f5;
+    -fx-border-color: #e8e8e8;
+    -fx-border-width: 0 1 0 0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.03), 4, 0, 1, 0);
+}
+
+/* 菜单项基础 */
+.left-menu {
+    -fx-border-width: 0;
+    -fx-underline: false;
+    -fx-font-size: 14px;
+    -fx-font-weight: normal;
+    -fx-padding: 12 20 12 20;
+    -fx-pref-width: 219;
+    -fx-text-fill: #5c6370;
+    -fx-background-radius: 0;
+    -fx-cursor: hand;
+    -fx-transition: all 0.2s ease;
+}
+
+/* 菜单项 hover */
+.left-menu:hover {
+    -fx-background-color: #e4e7ed;
+    -fx-text-fill: #2c3e50;
+}
+
+/* 菜单项选中 */
+.left-menu-active {
+    -fx-border-width: 0;
+    -fx-underline: false;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 12 20 12 20;
+    -fx-pref-width: 219;
+    -fx-background-color: #dce0e8;
+    -fx-text-fill: #ec4141;
+}
+
+/* 菜单图标容器 */
+.left-menu-icon {
+    -fx-opacity: 0.7;
+}
+
+.left-menu-active .left-menu-icon {
+    -fx-opacity: 1.0;
+}
+
+/* ================================================================
+ * 中央内容区
+ * ================================================================ */
+
+#center-pane {
+    -fx-background-color: #f7f8fa;
+}
+
+/* ================================================================
+ * 底部播放器
+ * ================================================================ */
+
+/* 底部容器 — 毛玻璃效果 */
+.player-bar {
+    -fx-background-color: linear-gradient(to bottom, #fafbfc, #f5f6f8);
+    -fx-border-color: #e4e6ea;
+    -fx-border-width: 1 0 0 0;
+    -fx-padding: 10 18 10 18;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 8, 0, 0, -2);
+}
+
+/* 歌曲名 */
+.song-name-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+/* 时间标签 */
+.time-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #95a0b0;
+    -fx-font-family: "SF Mono", "Consolas", "Menlo", monospace;
+}
+
+/* ==================== 播放器按钮 ==================== */
+
+/* 基础按钮样式 */
+.player-btn-base {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-padding: 7 20 7 20;
+    -fx-background-radius: 20;
+    -fx-cursor: hand;
+    -fx-transition: all 0.2s ease;
+}
+
+/* 主按钮 — 红色（播放/暂停） */
+.player-btn-primary {
+    -fx-background-color: linear-gradient(to bottom, #ec4141, #e03a3f);
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-padding: 8 24 8 24;
+    -fx-background-radius: 22;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(236,65,65,0.35), 8, 0.2, 0, 2);
+    -fx-transition: all 0.2s ease;
+}
+
+.player-btn-primary:hover {
+    -fx-background-color: linear-gradient(to bottom, #f04b4b, #e84448);
+    -fx-effect: dropshadow(gaussian, rgba(236,65,65,0.50), 12, 0.3, 0, 3);
+    -fx-scale-x: 1.04;
+    -fx-scale-y: 1.04;
+}
+
+.player-btn-primary:pressed {
+    -fx-background-color: #d9353a;
+    -fx-effect: dropshadow(gaussian, rgba(236,65,65,0.25), 4, 0, 0, 1);
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+}
+
+/* 次按钮 — 浅红（上一首/下一首） */
+.player-btn-secondary {
+    -fx-background-color: #fff0f0;
+    -fx-text-fill: #ec4141;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-padding: 7 18 7 18;
+    -fx-background-radius: 18;
+    -fx-cursor: hand;
+    -fx-border-color: #ffd0d0;
+    -fx-border-width: 1;
+    -fx-border-radius: 18;
+    -fx-transition: all 0.2s ease;
+}
+
+.player-btn-secondary:hover {
+    -fx-background-color: #ffe5e5;
+    -fx-border-color: #ec4141;
+    -fx-effect: dropshadow(gaussian, rgba(236,65,65,0.15), 6, 0, 0, 2);
+}
+
+.player-btn-secondary:pressed {
+    -fx-background-color: #ffd5d5;
+}
+
+/* 幽灵按钮 — 灰色（模式/扫描/列表） */
+.player-btn-ghost {
+    -fx-background-color: #eef0f4;
+    -fx-text-fill: #5c6370;
+    -fx-font-size: 13px;
+    -fx-font-weight: normal;
+    -fx-padding: 7 16 7 16;
+    -fx-background-radius: 16;
+    -fx-cursor: hand;
+    -fx-transition: all 0.2s ease;
+}
+
+.player-btn-ghost:hover {
+    -fx-background-color: #e0e3ea;
+    -fx-text-fill: #2c3e50;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 4, 0, 0, 2);
+}
+
+.player-btn-ghost:pressed {
+    -fx-background-color: #d5d9e0;
+}
+
+/* ==================== 信息标签 ==================== */
+
+.info-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #8895a8;
+}
+
+/* ==================== 音量滑块 ==================== */
+
+.volume-slider .track {
+    -fx-background-color: #e0e4ea;
+    -fx-background-radius: 4;
+    -fx-pref-height: 4;
+}
+
+.volume-slider .thumb {
+    -fx-background-color: #ec4141;
+    -fx-background-radius: 50%;
+    -fx-pref-height: 14;
+    -fx-pref-width: 14;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 4, 0, 0, 2);
+}
+
+/* ==================== 进度条 ==================== */
+
+.progress-slider .track {
+    -fx-background-color: #e4e8ef;
+    -fx-background-radius: 3;
+    -fx-pref-height: 4;
+}
+
+.progress-slider .thumb {
+    -fx-background-color: #ec4141;
+    -fx-background-radius: 50%;
+    -fx-pref-height: 14;
+    -fx-pref-width: 14;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 4, 0, 0, 2);
+}
+
+/* ================================================================
+ * 播放列表抽屉
+ * ================================================================ */
+
+.playlist-drawer {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e6e9ef;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-padding: 14;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.10), 14, 0.2, 0, 4);
+}
+
+.playlist-drawer .list-view {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 4 0;
+}
+
+.playlist-drawer .list-cell {
+    -fx-padding: 8 12;
+    -fx-font-size: 13px;
+    -fx-text-fill: #3a4150;
+    -fx-background-radius: 6;
+    -fx-background-color: transparent;
+    -fx-transition: all 0.15s ease;
+}
+
+.playlist-drawer .list-cell:hover {
+    -fx-background-color: #f5f6fa;
+}
+
+.playlist-drawer .list-cell:selected {
+    -fx-background-color: #fef0f0;
+    -fx-text-fill: #ec4141;
+    -fx-font-weight: bold;
+}
+
+/* ================================================================
+ * 头像圆角裁剪
+ * ================================================================ */
+
+.avatar-clip {
+    -fx-arc-height: 38;
+    -fx-arc-width: 38;
+}
+
+/* 头像 hover 微动效 */
+.avatar-container:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 8, 0, 0, 3);
+    -fx-scale-x: 1.06;
+    -fx-scale-y: 1.06;
+    -fx-transition: all 0.2s ease;
+}
+
+/* ================================================================
+ * 滚动条美化
+ * ================================================================ */
+
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 6;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #c8cdd5;
+    -fx-background-radius: 3;
+}
+
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #a8aeb8;
+}
+
+.scroll-bar:vertical .track {
+    -fx-background-color: transparent;
 }

@@ -16,211 +16,248 @@
 <?import javafx.scene.shape.Rectangle?>
 
 <BorderPane fx:id="root" minHeight="440" minWidth="860" prefHeight="640" prefWidth="1060"
-            style="-fx-background-color: #F7F9FC;"
+            style="-fx-background-color: #f7f8fa;"
             stylesheets="@../style/top-bar.css"
             xmlns="http://javafx.com/javafx/11.0.14-internal"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="org.smog.neteasecloud.contrll.HomeController">
+
+    <!-- ==================== 顶部导航栏 ==================== -->
     <top>
-        <HBox fx:id="top" alignment="CENTER_LEFT" spacing="8"
-              style="-fx-background-color: #fc3d49; -fx-padding: 0 0 0 20;">
+        <HBox fx:id="top" alignment="CENTER_LEFT" spacing="4" styleClass="top-bar-container"
+              style="-fx-background-color: linear-gradient(to right, #e83a3f, #ec4141); -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 6, 0, 0, 2); -fx-padding: 0 0 0 24;">
             <children>
-                <HBox fx:id="logo" alignment="CENTER_LEFT" prefHeight="78" prefWidth="170"
-                      style="-fx-background-image: url('/image/topbar.png'); -fx-background-repeat: no-repeat; -fx-background-position: 0 10;" />
-                <Hyperlink fx:id="discoverMenu" text="发现音乐" textFill="WHITE"
-                           styleClass="tob-nav" stylesheets="@../style/top-bar.css"
-                           onAction="#toDiscover" onMouseEntered="#setTopNavHover" onMouseExited="#removeTopNavHover" />
-                <Hyperlink fx:id="followMenu" text="关注" textFill="WHITE"
-                           styleClass="tob-nav" stylesheets="@../style/top-bar.css"
-                           onAction="#toFollow" onMouseEntered="#setTopNavHover" onMouseExited="#removeTopNavHover" />
-                <Hyperlink fx:id="storeMenu" text="商城" textFill="WHITE"
-                           styleClass="tob-nav" stylesheets="@../style/top-bar.css"
-                           onAction="#toStore" onMouseEntered="#setTopNavHover" onMouseExited="#removeTopNavHover" />
-                <Hyperlink fx:id="musicianMenu" text="音乐人" textFill="WHITE"
-                           styleClass="tob-nav" stylesheets="@../style/top-bar.css"
-                           onAction="#toMusician" onMouseEntered="#setTopNavHover" onMouseExited="#removeTopNavHover" />
-                <Hyperlink fx:id="cloudPushMenu" text="云推歌" textFill="WHITE"
-                           styleClass="tob-nav" stylesheets="@../style/top-bar.css"
-                           onAction="#toCloudPush" onMouseEntered="#setTopNavHover" onMouseExited="#removeTopNavHover" />
-                <TextField fx:id="search" promptText="搜索音乐 / 歌手 / 专辑"
-                           style="-fx-background-radius: 15; -fx-background-color: #fff;">
+                <!-- Logo -->
+                <HBox fx:id="logo" alignment="CENTER_LEFT" prefHeight="64" prefWidth="170"
+                      style="-fx-background-image: url('/image/topbar.png'); -fx-background-repeat: no-repeat; -fx-background-position: 0 6;"/>
+
+                <!-- 发现音乐 -->
+                <Hyperlink fx:id="discoverMenu" text="发现音乐"
+                           styleClass="tob-nav"
+                           onAction="#toDiscover" onMouseEntered="#setTopNavHover" onMouseExited="#removeTopNavHover"/>
+                <!-- 关注 -->
+                <Hyperlink fx:id="followMenu" text="关注"
+                           styleClass="tob-nav"
+                           onAction="#toFollow" onMouseEntered="#setTopNavHover" onMouseExited="#removeTopNavHover"/>
+                <!-- 商城 -->
+                <Hyperlink fx:id="storeMenu" text="商城"
+                           styleClass="tob-nav"
+                           onAction="#toStore" onMouseEntered="#setTopNavHover" onMouseExited="#removeTopNavHover"/>
+                <!-- 音乐人 -->
+                <Hyperlink fx:id="musicianMenu" text="音乐人"
+                           styleClass="tob-nav"
+                           onAction="#toMusician" onMouseEntered="#setTopNavHover" onMouseExited="#removeTopNavHover"/>
+                <!-- 云推歌 -->
+                <Hyperlink fx:id="cloudPushMenu" text="云推歌"
+                           styleClass="tob-nav"
+                           onAction="#toCloudPush" onMouseEntered="#setTopNavHover" onMouseExited="#removeTopNavHover"/>
+
+                <!-- 搜索框 -->
+                <TextField fx:id="search" promptText="搜索音乐 / 歌手 / 专辑" styleClass="search-field">
                     <padding>
-                        <Insets top="5" right="10" bottom="5" left="20" />
+                        <Insets top="6" right="14" bottom="6" left="36"/>
                     </padding>
+                    <HBox.margin>
+                        <Insets left="16"/>
+                    </HBox.margin>
                 </TextField>
-                <ImageView fitHeight="40" fitWidth="40" pickOnBounds="true" preserveRatio="true">
+
+                <!-- 头像 -->
+                <ImageView fitHeight="38" fitWidth="38" pickOnBounds="true" preserveRatio="true"
+                           styleClass="avatar-container">
                     <image>
-                        <Image url="@../image/tx.jpg" />
+                        <Image url="@../image/tx.jpg"/>
                     </image>
                     <clip>
-                        <Rectangle arcHeight="40" arcWidth="40" height="40" width="40" />
+                        <Rectangle arcHeight="38" arcWidth="38" height="38" width="38"/>
                     </clip>
                     <HBox.margin>
-                        <Insets left="40" />
+                        <Insets left="32"/>
                     </HBox.margin>
                 </ImageView>
             </children>
         </HBox>
     </top>
 
+    <!-- ==================== 左侧菜单栏 ==================== -->
     <left>
-        <VBox fx:id="leftMenu" prefWidth="220" style="-fx-background-color: #f0f3f6;">
+        <VBox fx:id="leftMenu" prefWidth="220" styleClass="left-menu-container"
+              style="-fx-background-color: #f0f2f5; -fx-border-color: #e8e8e8; -fx-border-width: 0 1 0 0; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.03), 4, 0, 1, 0);">
             <children>
-                <Hyperlink fx:id="recommendMenu" text="推荐" textFill="#787f8d"
-                           styleClass="left-menu" stylesheets="@../style/top-bar.css"
+                <!-- 推荐 -->
+                <Hyperlink fx:id="recommendMenu" text="推荐"
+                           styleClass="left-menu"
                            onAction="#toRecommend" onMouseEntered="#setSelectedBackgroundColor" onMouseExited="#removeBackgroundColor">
                     <graphic>
                         <ImageView>
                             <image>
-                                <Image preserveRatio="true" requestedHeight="24" requestedWidth="24" url="@/image/icon/wyy.png" />
+                                <Image preserveRatio="true" requestedHeight="22" requestedWidth="22" url="@/image/icon/wyy.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                 </Hyperlink>
-                <Hyperlink fx:id="featuredMenu" text="精选" textFill="#787f8d"
-                           styleClass="left-menu" stylesheets="@../style/top-bar.css"
+                <!-- 精选 -->
+                <Hyperlink fx:id="featuredMenu" text="精选"
+                           styleClass="left-menu"
                            onAction="#toFeatured" onMouseEntered="#setSelectedBackgroundColor" onMouseExited="#removeBackgroundColor">
                     <graphic>
                         <ImageView>
                             <image>
-                                <Image preserveRatio="true" requestedHeight="20" requestedWidth="20" url="@/image/icon/yyyjx.png" />
+                                <Image preserveRatio="true" requestedHeight="18" requestedWidth="18" url="@/image/icon/yyyjx.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                 </Hyperlink>
-                <Hyperlink text="播客" textFill="#787f8d"
-                           styleClass="left-menu" stylesheets="@../style/top-bar.css"
+                <!-- 播客 -->
+                <Hyperlink text="播客"
+                           styleClass="left-menu"
                            onAction="#toPodcast" onMouseEntered="#setSelectedBackgroundColor" onMouseExited="#removeBackgroundColor">
                     <graphic>
                         <ImageView>
                             <image>
-                                <Image preserveRatio="true" requestedHeight="20" requestedWidth="20" url="@/image/icon/bk.png" />
+                                <Image preserveRatio="true" requestedHeight="18" requestedWidth="18" url="@/image/icon/bk.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                 </Hyperlink>
-                <Hyperlink text="私人漫游" textFill="#787f8d"
-                           styleClass="left-menu" stylesheets="@../style/top-bar.css"
+                <!-- 私人漫游 -->
+                <Hyperlink text="私人漫游"
+                           styleClass="left-menu"
                            onAction="#toPrivateRoaming" onMouseEntered="#setSelectedBackgroundColor" onMouseExited="#removeBackgroundColor">
                     <graphic>
                         <ImageView>
                             <image>
-                                <Image preserveRatio="true" requestedHeight="20" requestedWidth="20" url="@/image/icon/srmy.png" />
+                                <Image preserveRatio="true" requestedHeight="18" requestedWidth="18" url="@/image/icon/srmy.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                 </Hyperlink>
-                <Hyperlink text="社区" textFill="#787f8d"
-                           styleClass="left-menu" stylesheets="@../style/top-bar.css"
+                <!-- 社区 -->
+                <Hyperlink text="社区"
+                           styleClass="left-menu"
                            onAction="#toCommunity" onMouseEntered="#setSelectedBackgroundColor" onMouseExited="#removeBackgroundColor">
                     <graphic>
                         <ImageView>
                             <image>
-                                <Image preserveRatio="true" requestedHeight="20" requestedWidth="20" url="@/image/icon/sq.png" />
+                                <Image preserveRatio="true" requestedHeight="18" requestedWidth="18" url="@/image/icon/sq.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                 </Hyperlink>
-                <Hyperlink text="我喜欢的音乐" textFill="#787f8d"
-                           styleClass="left-menu" stylesheets="@../style/top-bar.css"
+                <!-- 我喜欢的音乐 -->
+                <Hyperlink text="我喜欢的音乐"
+                           styleClass="left-menu"
                            onAction="#toILike" onMouseEntered="#setSelectedBackgroundColor" onMouseExited="#removeBackgroundColor">
                     <graphic>
                         <ImageView>
                             <image>
-                                <Image preserveRatio="true" requestedHeight="20" requestedWidth="20" url="@/image/icon/like.png" />
+                                <Image preserveRatio="true" requestedHeight="18" requestedWidth="18" url="@/image/icon/like.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                 </Hyperlink>
-                <Hyperlink text="我的播客" textFill="#787f8d"
-                           styleClass="left-menu" stylesheets="@../style/top-bar.css"
+                <!-- 我的播客 -->
+                <Hyperlink text="我的播客"
+                           styleClass="left-menu"
                            onAction="#toMyPodcast" onMouseEntered="#setSelectedBackgroundColor" onMouseExited="#removeBackgroundColor">
                     <graphic>
                         <ImageView>
                             <image>
-                                <Image requestedHeight="20" requestedWidth="20" url="@/image/icon/wdbk.png" />
+                                <Image requestedHeight="18" requestedWidth="18" url="@/image/icon/wdbk.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                 </Hyperlink>
-                <Hyperlink text="我的收藏" textFill="#787f8d"
-                           styleClass="left-menu" stylesheets="@../style/top-bar.css"
+                <!-- 我的收藏 -->
+                <Hyperlink text="我的收藏"
+                           styleClass="left-menu"
                            onAction="#toMyCollection" onMouseEntered="#setSelectedBackgroundColor" onMouseExited="#removeBackgroundColor">
                     <graphic>
                         <ImageView>
                             <image>
-                                <Image requestedHeight="20" requestedWidth="20" url="@/image/icon/sc.png" />
+                                <Image requestedHeight="18" requestedWidth="18" url="@/image/icon/sc.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                 </Hyperlink>
-                <Hyperlink text="下载管理" textFill="#787f8d"
-                           styleClass="left-menu" stylesheets="@../style/top-bar.css"
+                <!-- 下载管理 -->
+                <Hyperlink text="下载管理"
+                           styleClass="left-menu"
                            onAction="#toDownloadManagement" onMouseEntered="#setSelectedBackgroundColor" onMouseExited="#removeBackgroundColor">
                     <graphic>
                         <ImageView>
                             <image>
-                                <Image requestedHeight="20" requestedWidth="20" url="@/image/icon/xz.png" />
+                                <Image requestedHeight="18" requestedWidth="18" url="@/image/icon/xz.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                 </Hyperlink>
             </children>
             <padding>
-                <Insets top="20" />
+                <Insets top="16"/>
             </padding>
         </VBox>
     </left>
 
+    <!-- ==================== 中央内容区 ==================== -->
     <center>
-        <Pane style="-fx-background-color: #f7f9fc;" />
+        <Pane fx:id="centerPane" style="-fx-background-color: #f7f8fa;"/>
     </center>
 
+    <!-- ==================== 底部播放器 ==================== -->
     <bottom>
-        <VBox spacing="8"
-              style="-fx-background-color: #fafafa; -fx-border-color: #e7eaf0; -fx-border-width: 1 0 0 0; -fx-padding: 8 14 8 14;">
+        <VBox spacing="6" styleClass="player-bar">
             <children>
-                <Label fx:id="currentSongNameLabel" style="-fx-font-size: 14px; -fx-text-fill: #25324a;" text="暂无歌曲" />
-                <HBox alignment="CENTER_LEFT" spacing="8">
+                <!-- 当前歌曲名 -->
+                <Label fx:id="currentSongNameLabel" styleClass="song-name-label" text="暂无歌曲"/>
+
+                <!-- 进度条 -->
+                <HBox alignment="CENTER_LEFT" spacing="10">
                     <children>
-                        <Label fx:id="currentTimeLabel" style="-fx-text-fill: #69758b;" text="00:00" />
-                        <Slider fx:id="progressSlider" HBox.hgrow="ALWAYS" prefWidth="500"
-                                onMousePressed="#onProgressPressed" onMouseReleased="#onProgressReleased" />
-                        <Label fx:id="totalTimeLabel" style="-fx-text-fill: #69758b;" text="00:00" />
+                        <Label fx:id="currentTimeLabel" styleClass="time-label" text="00:00"/>
+                        <Slider fx:id="progressSlider" styleClass="progress-slider" HBox.hgrow="ALWAYS" prefWidth="500"
+                                onMousePressed="#onProgressPressed" onMouseReleased="#onProgressReleased"/>
+                        <Label fx:id="totalTimeLabel" styleClass="time-label" text="00:00"/>
                     </children>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" spacing="8">
+
+                <!-- 控制按钮行 -->
+                <HBox alignment="CENTER_LEFT" spacing="10">
                     <children>
-                        <Button fx:id="previousButton" text="上一首"
-                                style="-fx-background-color: #ff5f5f; -fx-text-fill: white; -fx-background-radius: 16;"
-                                mnemonicParsing="false" onAction="#playPreviousSong" />
-                        <Button fx:id="playPauseButton" text="播放"
-                                style="-fx-background-color: #fc3d49; -fx-text-fill: white; -fx-background-radius: 16;"
-                                mnemonicParsing="false" onAction="#togglePlayPause" />
-                        <Button fx:id="nextButton" text="下一首"
-                                style="-fx-background-color: #ff5f5f; -fx-text-fill: white; -fx-background-radius: 16;"
-                                mnemonicParsing="false" onAction="#playNextSong" />
-                        <Button fx:id="playModeButton" text="列表循环"
-                                style="-fx-background-color: #e9edf5; -fx-text-fill: #394457; -fx-background-radius: 16;"
-                                mnemonicParsing="false" onAction="#switchPlayMode" />
-                        <Button text="重新扫描本地"
-                                style="-fx-background-color: #e9edf5; -fx-text-fill: #394457; -fx-background-radius: 16;"
-                                mnemonicParsing="false" onAction="#reloadLocalSongs" />
-                        <Button fx:id="playlistToggleButton" text="播放列表"
-                                style="-fx-background-color: #e9edf5; -fx-text-fill: #394457; -fx-background-radius: 16;"
-                                mnemonicParsing="false" onAction="#togglePlaylistDrawer" />
-                        <Label style="-fx-text-fill: #69758b;" text="音量" />
-                        <Slider fx:id="volumeSlider" prefWidth="120" />
-                        <Pane HBox.hgrow="ALWAYS" />
-                        <Label fx:id="playlistInfoLabel" style="-fx-text-fill: #69758b;" text="本地歌曲：0" />
+                        <Button fx:id="previousButton" text="上一首" styleClass="player-btn-secondary"
+                                mnemonicParsing="false" onAction="#playPreviousSong"/>
+                        <Button fx:id="playPauseButton" text="播放" styleClass="player-btn-primary"
+                                mnemonicParsing="false" onAction="#togglePlayPause"/>
+                        <Button fx:id="nextButton" text="下一首" styleClass="player-btn-secondary"
+                                mnemonicParsing="false" onAction="#playNextSong"/>
+                        <Button fx:id="playModeButton" text="列表循环" styleClass="player-btn-ghost"
+                                mnemonicParsing="false" onAction="#switchPlayMode"/>
+                        <Button text="重新扫描" styleClass="player-btn-ghost"
+                                mnemonicParsing="false" onAction="#reloadLocalSongs"/>
+                        <Button fx:id="playlistToggleButton" text="播放列表" styleClass="player-btn-ghost"
+                                mnemonicParsing="false" onAction="#togglePlaylistDrawer"/>
+
+                        <Label styleClass="info-label" text="音量">
+                            <HBox.margin>
+                                <Insets left="10"/>
+                            </HBox.margin>
+                        </Label>
+                        <Slider fx:id="volumeSlider" styleClass="volume-slider" prefWidth="100"/>
+
+                        <Pane HBox.hgrow="ALWAYS"/>
+
+                        <Label fx:id="playlistInfoLabel" styleClass="info-label" text="本地歌曲：0"/>
                     </children>
                 </HBox>
-                <VBox fx:id="playlistDrawer" managed="false" visible="false" translateY="180" spacing="6"
-                      style="-fx-background-color: #ffffff; -fx-border-color: #e6eaf0; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 10;">
+
+                <!-- 播放列表抽屉 -->
+                <VBox fx:id="playlistDrawer" managed="false" visible="false" translateY="180" spacing="8"
+                      styleClass="playlist-drawer">
                     <children>
-                        <Label style="-fx-text-fill: #69758b;" text="播放列表（双击歌曲可立即播放）" />
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #8895a8; -fx-font-weight: bold;"
+                               text="🎵 播放列表（双击歌曲可立即播放）"/>
                         <ListView fx:id="songListView" prefHeight="140" style="-fx-background-insets: 0;"
-                                  onMouseClicked="#onSongListClicked" />
+                                  onMouseClicked="#onSongListClicked"/>
                     </children>
                 </VBox>
             </children>

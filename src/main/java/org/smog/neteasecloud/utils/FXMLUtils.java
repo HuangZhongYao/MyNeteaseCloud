@@ -8,45 +8,46 @@ import org.smog.neteasecloud.conf.AppContext;
 import java.io.IOException;
 
 /**
- * @Desc fxml 工具类
+ * FXML 场景加载工具类
+ *
+ * @Desc 带缓存的场景加载，失败时降级到 404 页面
  * @Time 2024-06-21 10:50
  * @Author HuangZhongYao
  */
 @Slf4j
 public final class FXMLUtils {
 
+    private FXMLUtils() {
+        // 工具类，禁止实例化
+    }
+
     /**
-     * 获取fxml场景
-     * @param path fxml文件路径
-     * @return Parent 场景
+     * 加载 FXML 场景（优先使用缓存）
+     *
+     * @param path FXML 文件路径
+     * @return 加载后的场景节点
      */
-    public static Parent loadScene(String path){
-
-        // 获取缓存
-        Parent parent = AppContext.CACHE_SCENE.get(path);
-
-        try {
-
-            // 有缓存则使用缓存
-            if (null != parent){
-                return parent;
-            }
-
-            // 加载fxml
-            parent = FXMLLoader.load(FXMLUtils.class.getResource(path));
-            // 放入缓存
-            AppContext.CACHE_SCENE.put(path,parent);
-
+    public static Parent loadScene(String path) {
+        // 优先从缓存获取
+        Parent parent = AppContext.getCachedScene(path);
+        if (parent != null) {
             return parent;
-        } catch (IOException e) {
-            log.error("加载场景错误. {}",e.getMessage());
         }
 
-        // 返回404场景
+        try {
+            // 加载 FXML 并放入缓存
+            parent = FXMLLoader.load(FXMLUtils.class.getResource(path));
+            AppContext.putCachedScene(path, parent);
+            return parent;
+        } catch (IOException e) {
+            log.error("加载场景失败 [{}]: {}", path, e.getMessage());
+        }
+
+        // 降级：返回 404 页面
         try {
             return FXMLLoader.load(FXMLUtils.class.getResource(Constant.DEFAULT_SCENE_PATH));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("无法加载默认 404 页面", e);
         }
     }
 }

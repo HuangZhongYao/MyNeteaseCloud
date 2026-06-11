@@ -1,11 +1,98 @@
+/* ================================================================
+ * 推荐页样式
+ * ================================================================ */
+
+/* 滚动面板 */
 .scroll-pane {
     -fx-focus-color: transparent;
     -fx-border-width: 0;
-    -fx-background-color: #F7F9FC;
-    -fx-border-color: #F7F9FC;
+    -fx-background-color: #f7f8fa;
+    -fx-border-color: transparent;
 }
 
-.carousel{
-    -fx-background-radius: 15; /* 设置背景圆角半径 */
-    -fx-clip: null; /* 清除默认剪辑 */
+.scroll-pane > .viewport {
+    -fx-background-color: #f7f8fa;
+}
+
+/* ==================== 轮播图卡片 ==================== */
+
+/* 轮播容器 */
+.carousel-container {
+    -fx-padding: 16 24 16 24;
+    -fx-spacing: 20;
+}
+
+/* 轮播图片 — 卡片风格 */
+.carousel {
+    -fx-background-radius: 14;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 12, 0.15, 0, 4);
+    -fx-transition: all 0.35s ease;
+    -fx-cursor: hand;
+}
+
+.carousel:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.22), 18, 0.2, 0, 6);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+}
+
+/* ==================== 推荐区块标题 ==================== */
+
+.section-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+    -fx-padding: 8 0 4 0;
+}
+
+.section-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #8895a8;
+    -fx-padding: 0 0 12 0;
+}
+
+/* ==================== 推荐歌单卡片 ==================== */
+
+.playlist-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 12;
+    -fx-padding: 0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 10, 0.1, 0, 2);
+    -fx-transition: all 0.25s ease;
+    -fx-cursor: hand;
+}
+
+.playlist-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.14), 16, 0.2, 0, 4);
+    -fx-translate-y: -3;
+}
+
+.playlist-card:pressed {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 4, 0, 0, 1);
+    -fx-translate-y: 0;
+}
+
+.playlist-card-image {
+    -fx-background-radius: 12 12 0 0;
+}
+
+.playlist-card-title {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+    -fx-padding: 8 10 2 10;
+}
+
+.playlist-card-subtitle {
+    -fx-font-size: 11px;
+    -fx-text-fill: #95a0b0;
+    -fx-padding: 0 10 10 10;
+}
+
+/* ==================== 分隔线 ==================== */
+
+.divider {
+    -fx-background-color: #e8ebf0;
+    -fx-pref-height: 1;
+    -fx-padding: 0 24;
 }
