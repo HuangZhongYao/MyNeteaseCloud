@@ -35,6 +35,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Properties;
 import java.util.Random;
 import java.util.prefs.Preferences;
@@ -129,6 +130,7 @@ public class HomeController {
     private VBox playlistDrawer;
 
     private final List<File> localSongFiles = new ArrayList<>();
+    private final List<Integer> displayedSongIndices = new ArrayList<>();
     private final Random random = new Random();
     private final Preferences preferences = Preferences.userNodeForPackage(HomeController.class);
 
@@ -138,11 +140,13 @@ public class HomeController {
     private int lastSavedProgressSecond = -1;
     private PlayMode currentPlayMode = PlayMode.LIST_LOOP;
     private Hyperlink currentTopMenu;
+    private Hyperlink currentLeftMenu;
     private boolean playlistDrawerOpen = false;
 
     public void initialize() {
         recommendMenu.setStyle(Style.MOUSE_OVER_STYLE);
         root.setCenter(FXMLUtils.loadScene(Constant.RECOMMEND_SCENE_PATH));
+        currentLeftMenu = recommendMenu;
 
         currentTopMenu = discoverMenu;
         if (discoverMenu != null) {
@@ -169,14 +173,14 @@ public class HomeController {
 
     public void setSelectedBackgroundColor(MouseEvent event) {
         Object source = event.getSource();
-        if (source instanceof Region) {
+        if (source instanceof Region && source != currentLeftMenu) {
             ((Region) source).setStyle(Style.MOUSE_OVER_STYLE);
         }
     }
 
     public void removeBackgroundColor(MouseEvent event) {
         Object source = event.getSource();
-        if (source instanceof Region) {
+        if (source instanceof Region && source != currentLeftMenu) {
             ((Region) source).setStyle(Style.REMOVE_BACKGROUND_COLOR);
         }
     }
@@ -190,7 +194,8 @@ public class HomeController {
     public void setTheSelectedMenuBackgroundColor(ActionEvent event) {
         ObservableList<Node> children = leftMenu.getChildren();
         children.forEach(menu -> menu.setStyle(Style.REMOVE_BACKGROUND_COLOR));
-        ((Region) event.getSource()).setStyle(Style.MOUSE_OVER_STYLE);
+        currentLeftMenu = (Hyperlink) event.getSource();
+        currentLeftMenu.setStyle(Style.MOUSE_OVER_STYLE);
     }
 
     @FXML
@@ -343,8 +348,8 @@ public class HomeController {
             return;
         }
         int selectedIndex = songListView.getSelectionModel().getSelectedIndex();
-        if (selectedIndex >= 0 && selectedIndex < localSongFiles.size()) {
-            playSongAt(selectedIndex, true, Duration.ZERO);
+        if (selectedIndex >= 0 && selectedIndex < displayedSongIndices.size()) {
+            playSongAt(displayedSongIndices.get(selectedIndex), true, Duration.ZERO);
         }
     }
 
@@ -381,12 +386,15 @@ public class HomeController {
                 mediaPlayer.setVolume(newValue.doubleValue() / 100.0);
             }
         });
+
+        search.textProperty().addListener((observable, oldValue, newValue) -> refreshSongListView());
     }
 
     private void loadLocalSongs() {
         releaseCurrentPlayer();
 
         localSongFiles.clear();
+        displayedSongIndices.clear();
         currentSongIndex = -1;
         progressSlider.setValue(0);
         progressSlider.setMax(0);
@@ -406,7 +414,9 @@ public class HomeController {
                         .map(Path::toFile)
                         .collect(Collectors.toList()));
             }
-        } catch (IOException e) {           log.error("扫描本地音乐目录失败: {}", musicDir, e);           currentSongNameLabel.setText(TEXT_SCAN_FAILED);
+        } catch (IOException e) {
+            log.error("扫描本地音乐目录失败: {}", musicDir, e);
+            currentSongNameLabel.setText(TEXT_SCAN_FAILED);
             playlistInfoLabel.setText("本地目录读取失败：" + musicDir);
             refreshSongListView();
             closePlaylistDrawerImmediately();
@@ -415,7 +425,6 @@ public class HomeController {
         }
 
         refreshSongListView();
-        playlistInfoLabel.setText("本地歌曲：" + localSongFiles.size() );
         if (localSongFiles.isEmpty()) {
             currentSongNameLabel.setText(TEXT_NO_TRACKS_HINT);
             playPauseButton.setText(TEXT_PLAY);
@@ -431,11 +440,20 @@ public class HomeController {
     }
 
     private void refreshSongListView() {
+        String keyword = search == null || search.getText() == null ? "" : search.getText().trim().toLowerCase(Locale.ROOT);
         List<String> songNames = new ArrayList<>();
+        displayedSongIndices.clear();
         for (int i = 0; i < localSongFiles.size(); i++) {
-            songNames.add((i + 1) + ". " + localSongFiles.get(i).getName());
+            String songName = localSongFiles.get(i).getName();
+            if (!keyword.isEmpty() && !songName.toLowerCase(Locale.ROOT).contains(keyword)) {
+                continue;
+            }
+            displayedSongIndices.add(i);
+            songNames.add((i + 1) + ". " + songName);
         }
         songListView.setItems(FXCollections.observableArrayList(songNames));
+        selectCurrentSongInListView();
+        updatePlaylistInfo();
     }
 
     private void openPlaylistDrawer() {
@@ -512,8 +530,7 @@ public class HomeController {
         lastSavedProgressSecond = -1;
         currentSongNameLabel.setText(songFile.getName());
         playPauseButton.setText(TEXT_PLAY);
-        songListView.getSelectionModel().select(index);
-        songListView.scrollTo(index);
+        selectCurrentSongInListView();
 
         mediaPlayer = new MediaPlayer(new Media(songFile.toURI().toString()));
         mediaPlayer.setVolume(volumeSlider.getValue() / 100.0);
@@ -601,6 +618,27 @@ public class HomeController {
         playModeButton.setDisable(!enabled);
         playlistToggleButton.setDisable(!enabled);
         songListView.setDisable(!enabled);
+    }
+
+    private void selectCurrentSongInListView() {
+        if (songListView == null) {
+            return;
+        }
+        int displayIndex = displayedSongIndices.indexOf(currentSongIndex);
+        if (displayIndex >= 0) {
+            songListView.getSelectionModel().select(displayIndex);
+            songListView.scrollTo(displayIndex);
+        } else {
+            songListView.getSelectionModel().clearSelection();
+        }
+    }
+
+    private void updatePlaylistInfo() {
+        if (search != null && search.getText() != null && !search.getText().trim().isEmpty()) {
+            playlistInfoLabel.setText("本地歌曲：" + localSongFiles.size() + "，匹配：" + displayedSongIndices.size());
+            return;
+        }
+        playlistInfoLabel.setText("本地歌曲：" + localSongFiles.size());
     }
 
     private Path resolveMusicDirectory() {
